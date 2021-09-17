@@ -5,8 +5,8 @@ from base64 import b64decode,b64encode
 import argparse
 
 parser = argparse.ArgumentParser(description='rsa encryption/decryption')
-parser.add_argument("-P", "--privkey", help="Priv Key file path", required=False, default="priv.key")
-parser.add_argument("-p", "--pubkey", help="Pub Key file path", required=False, default="pub.key")
+parser.add_argument("-P", "--privkey", help="Priv Key file path", required=False, default="")
+parser.add_argument("-p", "--pubkey", help="Pub Key file path", required=False, default="")
 parser.add_argument("--text", help="Text to encrypt or decrypt", default="hello world")
 parser.add_argument("-e", "--encrypt", help="Whether to encrypt or not", nargs='?', const="public", choices=["", "public", "private"], default="")
 parser.add_argument("-d", "--decrypt", help="Whether to decrypt or not", nargs='?', const="private", choices=["", "public", "private"], default="")
@@ -17,8 +17,11 @@ args = parser.parse_args()
 if not args.encrypt and not args.decrypt:
     parser.error("requires either --encrypt or --decrypt")
 
-privkey = open(args.privkey, "r").read()
-pubkey = open(args.pubkey, "r").read()
+if args.privkey:
+    privkey = open(args.privkey, "r").read()
+if args.pubkey:
+    pubkey = open(args.pubkey, "r").read()
+
 if args.debug:
     print("privatekey", privkey, "\n", "publickey", pubkey)
     print("privatekey", privkey, "\n", "publickey", pubkey)
