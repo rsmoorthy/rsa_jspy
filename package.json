@@ -1,0 +1,16 @@
+{
+  "name": "rsa_jspy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tst.js",
+  "dependencies": {
+    "argparse": "^2.0.1",
+    "ramda": "^0.27.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "bash test.sh"
+  },
+  "author": "",
+  "license": "ISC"
+}
